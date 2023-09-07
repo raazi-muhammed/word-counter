@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--CORNER-RADIUS: 1rem;
+	--PADDING: 1rem;
+}
+
+body {
+	font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	line-height: 1.5;
+	color: white;
+
+	background-color: #333;
+	background-image: linear-gradient(to bottom right, #0a3060, #000);
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100vh;
+	min-width: 100vw;
+}
+
+main {
+	padding: var(--PADDING);
+	width: min(70rem, 100%);
+}
+
+aside {
+	padding: var(--PADDING);
+	display: grid;
+	gap: var(--PADDING);
+	width: 100%;
+}
+
+.main-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+@media only screen and (min-width: 768px) {
+	aside {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media only screen and (min-width: 70rem) {
+	aside {
+		grid-template-columns: 1fr;
+		max-width: 30rem;
+	}
+	.main-wrapper {
+		flex-direction: row;
+	}
+}
+
+main textarea {
+	background-color: hsla(0, 0%, 100%, 0.05);
+	color: inherit;
+
+	width: 100% !important;
+
+	border-radius: var(--CORNER-RADIUS);
+	border: none;
+	font-family: inherit;
+	font-weight: 300;
+	font-size: 1rem;
+
+	padding: var(--PADDING);
+
+	transition: box-shadow 300ms ease-in-out;
+}
+
+main textarea:active,
+main textarea:focus {
+	border: none;
+	outline: none;
+	box-shadow: 10px 5px 2rem hsla(0, 0%, 0%, 0.5);
+}
+
+.card {
+	background-color: hsla(0, 0%, 100%, 0.05);
+	border-radius: var(--CORNER-RADIUS);
+	padding: var(--PADDING);
+
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--PADDING);
+
+	& .heading {
+		display: flex;
+		gap: var(--PADDING);
+		grid-column: 1 / 3; /* span from grid column line 1 to 3 (i.e., span 2 columns) */
+	}
+}
+
+.card-sub {
+	background-color: hsla(0, 0%, 100%, 0.05);
+	border-radius: var(--CORNER-RADIUS);
+	padding: var(--PADDING);
+}
+
+.text-head {
+	font-size: 1.5rem;
+}
+
+.text-sub {
+	font-size: 1rem;
+	font-weight: 200;
+}
