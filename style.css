@@ -9,6 +9,7 @@
 :root {
 	--CORNER-RADIUS: 1rem;
 	--PADDING: 1rem;
+	--PADDING-2: 2rem;
 }
 
 body {
@@ -25,6 +26,12 @@ body {
 	min-width: 100vw;
 }
 
+header {
+	margin-left: var(--PADDING-2);
+	margin-top: var(--PADDING-2);
+	margin-bottom: -1rem;
+}
+
 main {
 	padding: var(--PADDING);
 	width: min(70rem, 100%);
@@ -38,6 +45,7 @@ aside {
 }
 
 .main-wrapper {
+	padding: var(--PADDING);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -58,6 +66,9 @@ aside {
 	.main-wrapper {
 		flex-direction: row;
 	}
+	main textarea {
+		height: 85vh;
+	}
 }
 
 main textarea {
@@ -71,6 +82,7 @@ main textarea {
 	font-family: inherit;
 	font-weight: 300;
 	font-size: 1rem;
+	letter-spacing: 1px;
 
 	padding: var(--PADDING);
 
@@ -79,9 +91,16 @@ main textarea {
 
 main textarea:active,
 main textarea:focus {
+	background-color: hsla(0, 0%, 100%, 0.07);
 	border: none;
 	outline: none;
-	box-shadow: 10px 5px 2rem hsla(0, 0%, 0%, 0.5);
+	box-shadow: 10px 5px 2rem hsla(0, 0%, 0%, 0.3);
+}
+
+main textarea::placeholder {
+	font: inherit;
+	color: inherit;
+	opacity: 0.5;
 }
 
 .card {
@@ -104,6 +123,11 @@ main textarea:focus {
 	background-color: hsla(0, 0%, 100%, 0.05);
 	border-radius: var(--CORNER-RADIUS);
 	padding: var(--PADDING);
+	transition: transform 0.3s ease-in-out;
+}
+
+.card-sub:hover {
+	transform: scale(1.05);
 }
 
 .text-head {
@@ -113,4 +137,25 @@ main textarea:focus {
 .text-sub {
 	font-size: 1rem;
 	font-weight: 200;
+}
+
+footer {
+	margin-bottom: var(--PADDING-2);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	color: rgba(255, 255, 255, 0.3);
+
+	& a {
+		color: rgba(255, 255, 255, 0.3);
+	}
+	& a:hover {
+		color: white;
+	}
+}
+
+footer div {
+	display: flex;
+	gap: 1rem;
 }

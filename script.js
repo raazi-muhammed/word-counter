@@ -17,21 +17,6 @@ function analyzeText(input) {
 	return { charCount, wordCount, sentenceCount, paragraphCount };
 }
 
-// Example usage:
-const text = `
-  This is a sample text. It has multiple sentences.
-  There are two paragraphs in this text.
-
-  The end!
-`;
-
-/* const result = analyzeText(text);
-console.log("Character Count:", result[0]);
-console.log("Word Count:", result[1]);
-console.log("Sentence Count:", result[2]);
-console.log("Paragraph Count:", result[3]);
- */
-
 function displayContent(objOfCounting, objOfTime) {
 	const displayCharacters = document.querySelector("#display-characters");
 	const displayWords = document.querySelector("#display-words");
@@ -69,13 +54,7 @@ function calculateTimeEstimates(inputText) {
 	return { readingTimeMinutes, speakingTimeMinutes };
 }
 
-// Example usage:
-/* const inputText = "This is a sample text for calculating time estimates.";
-const [readingTime, speakingTime] = calculateTimeEstimates(inputText);
-console.log(`Estimated Reading Time: ${readingTime.toFixed(1)} minutes`);
-console.log(`Estimated Speaking Time: ${speakingTime.toFixed(1)} minutes`); */
-
-textAreaContent.addEventListener("keypress", () => {
+textAreaContent.addEventListener("input", () => {
 	const objOfCounting = analyzeText(textAreaContent.value);
 	const objOfTime = calculateTimeEstimates(textAreaContent.value);
 	displayContent(objOfCounting, objOfTime);
