@@ -18,7 +18,7 @@ body {
 	line-height: 1.5;
 	color: white;
 
-	background-color: #333;
+	background-color: #09224a;
 	background-image: linear-gradient(to bottom right, #0a3060, #000);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -52,25 +52,17 @@ aside {
 	align-items: flex-start;
 }
 
-@media only screen and (min-width: 768px) {
-	aside {
-		grid-template-columns: 1fr 1fr;
-	}
+/* Text */
+.text-head {
+	font-size: 1.5rem;
 }
 
-@media only screen and (min-width: 70rem) {
-	aside {
-		grid-template-columns: 1fr;
-		max-width: 30rem;
-	}
-	.main-wrapper {
-		flex-direction: row;
-	}
-	main textarea {
-		height: 85vh;
-	}
+.text-sub {
+	font-size: 1rem;
+	font-weight: 200;
 }
 
+/* Main */
 main textarea {
 	background-color: hsla(0, 0%, 100%, 0.05);
 	color: inherit;
@@ -103,6 +95,7 @@ main textarea::placeholder {
 	opacity: 0.5;
 }
 
+/* Card */
 .card {
 	background-color: hsla(0, 0%, 100%, 0.05);
 	border-radius: var(--CORNER-RADIUS);
@@ -112,10 +105,12 @@ main textarea::placeholder {
 	grid-template-columns: 1fr 1fr;
 	gap: var(--PADDING);
 
+	margin-bottom: auto;
+
 	& .heading {
 		display: flex;
 		gap: var(--PADDING);
-		grid-column: 1 / 3; /* span from grid column line 1 to 3 (i.e., span 2 columns) */
+		grid-column: 1 / 3;
 	}
 }
 
@@ -130,15 +125,7 @@ main textarea::placeholder {
 	transform: scale(1.05);
 }
 
-.text-head {
-	font-size: 1.5rem;
-}
-
-.text-sub {
-	font-size: 1rem;
-	font-weight: 200;
-}
-
+/* Footer */
 footer {
 	margin-bottom: var(--PADDING-2);
 	display: flex;
@@ -158,4 +145,48 @@ footer {
 footer div {
 	display: flex;
 	gap: 1rem;
+}
+
+/* Tool Tip */
+.tooltip {
+	position: relative;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	background-color: rgba(0, 0, 0, 0.2);
+	color: #5e5e5e;
+	font-size: 0.7rem;
+
+	border-radius: var(--CORNER-RADIUS);
+	padding: var(--PADDING);
+
+	position: absolute;
+	top: 110%;
+	left: 0;
+	z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+/* Media Queries */
+@media only screen and (min-width: 768px) {
+	aside {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media only screen and (min-width: 70rem) {
+	aside {
+		grid-template-columns: 1fr;
+		max-width: 30rem;
+	}
+	.main-wrapper {
+		flex-direction: row;
+	}
+	main textarea {
+		height: 85vh;
+	}
 }

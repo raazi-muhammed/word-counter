@@ -3,10 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#09224A" />
+
 		<title>Word Counter</title>
+		<link rel="icon" type="image/x-icon" href="favicon.ico?v=2" />
 		<link rel="stylesheet" href="style.css" />
 		<script defer src="script.js"></script>
-		<!-- TODO: add fav icon -->
 	</head>
 	<body>
 		<header>
@@ -77,13 +79,19 @@
 						</svg>
 						<h3>Time</h3>
 					</div>
-					<section class="card-sub">
+					<section class="card-sub tooltip">
 						<p id="display-reading" class="text-head">0</p>
 						<p class="text-sub">reading</p>
+						<span class="tooltiptext"
+							>Based on the average reading speed on 200 WPM</span
+						>
 					</section>
-					<section class="card-sub">
+					<section class="card-sub tooltip">
 						<p id="display-speaking" class="text-head">0</p>
 						<p class="text-sub">speaking</p>
+						<span class="tooltiptext"
+							>Based on the average speaking speed on 150 WPM</span
+						>
 					</section>
 				</section>
 			</aside>

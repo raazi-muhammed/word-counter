@@ -1,20 +1,29 @@
 const textAreaContent = document.querySelector("#content");
 
 function analyzeText(input) {
-	// Calculate the number of characters
 	const charCount = input.length;
-
-	// Calculate the number of words (split by spaces)
 	const wordCount = input.trim().split(/\s+/).length;
-
-	// Calculate the number of sentences (split by '.', '!', or '?')
 	const sentenceCount = input.split(/[.!?]/).length - 1;
-
-	// Calculate the number of paragraphs (split by double line breaks)
 	const paragraphCount = input.split(/\n\s*\n/).length;
-
-	// Return the results as an array
 	return { charCount, wordCount, sentenceCount, paragraphCount };
+}
+
+function formatMinutesToTimeString(minutes) {
+	if (typeof minutes !== "number" || isNaN(minutes)) return "Invalid input";
+
+	const mins = Math.floor(minutes);
+	const secs = Math.round((minutes - mins) * 60);
+
+	if (mins === 0 && secs === 0) return "0 s";
+
+	let result = "";
+	if (mins > 0) result += `${mins}m`;
+	if (secs > 0) {
+		if (mins > 0) result += " ";
+		result += `${secs}s`;
+	}
+
+	return result;
 }
 
 function displayContent(objOfCounting, objOfTime) {
@@ -31,25 +40,21 @@ function displayContent(objOfCounting, objOfTime) {
 	displaySentences.textContent = objOfCounting.sentenceCount;
 	displayParagraphs.textContent = objOfCounting.paragraphCount;
 
-	displayReading.textContent = objOfTime.readingTimeMinutes + " min";
-	displaySpeaking.textContent = objOfTime.speakingTimeMinutes + " min";
+	displayReading.textContent = objOfTime.readingTimeMinutes;
+	displaySpeaking.textContent = objOfTime.speakingTimeMinutes;
 }
 
 function calculateTimeEstimates(inputText) {
-	const wordsPerMinuteReading = 200; // Average reading speed in words per minute
-	const wordsPerMinuteSpeaking = 150; // Average speaking speed in words per minute
+	const wordsPerMinuteReading = 200;
+	const wordsPerMinuteSpeaking = 150;
 
-	const wordCount = inputText.trim().split(/\s+/).length; // Calculate word count
+	const wordCount = inputText.trim().split(/\s+/).length;
 
-	// Calculate reading time in minutes
 	let readingTimeMinutes = wordCount / wordsPerMinuteReading;
-
-	// Calculate speaking time in minutes
 	let speakingTimeMinutes = wordCount / wordsPerMinuteSpeaking;
 
-	// Return the estimates as an array
-	speakingTimeMinutes = Number(speakingTimeMinutes.toFixed(2));
-	readingTimeMinutes = Number(readingTimeMinutes.toFixed(2));
+	readingTimeMinutes = formatMinutesToTimeString(readingTimeMinutes);
+	speakingTimeMinutes = formatMinutesToTimeString(speakingTimeMinutes);
 
 	return { readingTimeMinutes, speakingTimeMinutes };
 }
